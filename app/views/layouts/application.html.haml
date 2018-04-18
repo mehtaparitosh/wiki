@@ -1,0 +1,41 @@
+!!!
+%html
+  %head
+    %title Wiki
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          = link_to "WiKi", root_path, class: "navbar-brand"
+          -# %button.navbar-toggle.collapsed(data-toggle="collapse")
+          %button.navbar-toggle{"type" => "button", "data-target" => "#nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        .collapse.navbar-collapse#nav-collapse
+          %ul.nav.navbar-nav#categories
+            %li= link_to "All Categories", root_path
+            -Category.all.each do |category|
+              %li= link_to category.name, articles_path(category: category.id)
+          -if !user_signed_in?
+            = link_to 'Login', new_user_session_path, class: "btn btn-sm btn-default navbar-text navbar-right"
+          -else
+            = link_to 'Logout  ', destroy_user_session_path, method: :delete, class: "btn btn-sm btn-default navbar-text navbar-right"
+          -if user_signed_in?
+            = link_to "New Article", new_article_path, class: "btn btn-sm btn-default navbar-text navbar-right"
+    .container
+      .row
+        .col-md-7.col-md-offset-1.col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1
+          .notice
+            %p.notice= notice
+            %p.alert= alert
+          = yield
+        .col-md-1
+          .categories
+            %ul
+              %li= link_to "All Categories", root_path, class: "btn btn-sm btn-default"
+              -Category.all.each do |category|
+                %li= link_to category.name, articles_path(category: category.id), class: "btn btn-sm btn-default"

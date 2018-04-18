@@ -1,0 +1,74 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ // @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+body {
+background: #ECE9E6; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #ECE9E6 , #FFFFFF); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #ECE9E6 , #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+small {
+  padding-bottom: 2px;
+}
+
+.categories {
+  position:fixed;
+  ul {
+    margin-top: 100px;
+    margin-bottom: 10px;
+    list-style: none
+  }
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+.notice {
+  padding-top: 30px;
+  p {
+    padding-top: 10px;
+    color: green;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 1000px) {
+  .categories { display: none;}
+}
+
+@media screen and (min-width: 1001px) {
+  #categories { display: none; }
+}
+
+.navbar, .navbar-default {
+	border-radius: 0;
+	border: none;
+}
+
+.nav li {
+	display: inline;
+}
+
+.navbar-default .navbar-nav > li > a {
+}
+
+.navbar-default .navbar-nav li a:hover {
+	transition: 0.7s all linear;
+	height: 100%;
+}

@@ -1,0 +1,8 @@
+= simple_form_for(@article, html: {class: "from-horizonal"}) do |f|
+  = f.collection_select :category_id, Category.all, :id, :name, {prompt: "Choose Category"}
+  %br
+  %br
+  = f.input :title, input_html: {class: "form-control"}
+  = f.input :content, input_html: {class: "form-control"}
+  %br
+  = f.button :submit
